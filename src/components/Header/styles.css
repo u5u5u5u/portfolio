@@ -1,9 +1,10 @@
 header {
-  position: sticky;
-  top: 1.5rem;
+  position: fixed;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: calc(100% - 3rem);
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   border-radius: var(--border-radius);
