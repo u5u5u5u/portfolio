@@ -1,10 +1,11 @@
 import "./App.css";
 import About from "./components/About";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import Works from "./components/Works";
 import Skills from "./components/Skills";
+import Works from "./components/Works";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <About />
         <Skills />
         <Works />
+        <Contact />
       </main>
       <Footer />
     </>
