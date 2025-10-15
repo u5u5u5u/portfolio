@@ -1,0 +1,16 @@
+.work-card {
+  width: 300px;
+  height: 400px;
+  border-radius: var(--border-radius);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("https://placehold.jp/150x150.png") center/cover no-repeat;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+}
