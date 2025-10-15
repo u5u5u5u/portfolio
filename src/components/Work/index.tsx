@@ -1,13 +1,20 @@
 import "./styles.css";
 import Tag from "../ui/Tag";
+import type { WorkType } from "../../data/works";
 
-const Work = () => {
+interface WorkProps {
+  work: WorkType;
+}
+
+const Work = ({ work }: WorkProps) => {
   return (
-    <a className="work-card">
-      <h3>まちゃろぐ</h3>
-      <p>抹茶スイーツ専用SNS. 抹茶スイーツが好きな人同士で情報共有ができる.</p>
+    <a href={work.link} className="work-card">
+      <h3>{work.title}</h3>
+      <p>{work.description}</p>
       <div className="tags">
-        <Tag text="React" />
+        {work.tags.map((tag) => (
+          <Tag key={tag} text={tag} />
+        ))}
       </div>
     </a>
   );
