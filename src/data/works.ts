@@ -18,7 +18,7 @@ export const works: WorkType[] = [
     tags: ["Unity", "Geospatial API", "ARCore", "ARKit"],
   },
   {
-    title: "地球っ子ネットワーク",
+    title: "地球っ子ネットワーク HP",
     description:
       "九州工業大学教育ボランティア団体「地球っ子ネットワーク」のホームページ",
     tags: ["Next.js", "TypeScript", "Three.js", "microCMS API"],
