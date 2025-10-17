@@ -22,6 +22,8 @@ export const works: WorkType[] = [
     description:
       "九州工業大学教育ボランティア団体「地球っ子ネットワーク」のホームページ",
     tags: ["Next.js", "TypeScript", "Three.js", "microCMS API"],
+    imageUrl:
+      "https://pub-fcd0f7c6926e49c8b6b6e33b994dd2f0.r2.dev/chinet-hp/chinet_icon.png",
   },
   {
     title: "まちゃろぐ",
