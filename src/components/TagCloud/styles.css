@@ -1,7 +1,7 @@
 /*
 vars
 */
-#skills {
+:root {
   --tagcloud-transition-user-duration: 1250ms;
   --tagcloud-transition-user-ease: ease-in-out;
   --tagcloud-transition-duration: 250ms;
@@ -20,25 +20,29 @@ vars
   --tag-font-color-rgb: 255, 255, 255;
   --tag-font-family: "Open Sans", sans-serif;
   --tag-font-size: 1rem;
-  overflow: hidden;
 }
-
 /*
 global
 */
-#skills *,
-#skills *::before,
-#skills s*::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   border: 0;
   box-sizing: border-box;
 }
-
-#skills *:focus {
+*:focus {
   outline: none;
 }
-
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(var(--tagcloud-bg-color-rgb));
+  overflow: hidden;
+}
 /*
 tagcloud
 */
@@ -48,27 +52,24 @@ tagcloud
   --_diameter: var(--tagcloud-diameter);
   --_radius: calc(calc(var(--_diameter) / 2) - calc(var(--tag-diameter) / 2));
   width: var(--control-diameter);
+  aspect-ratio: 1 / 1;
   font-family: var(--tag-font-family);
   font-size: var(--tag-font-size);
 }
-
 @media only screen and (max-width: 48rem) {
   .tagcloud-wrapper {
     --_control-diamater: calc(var(--tagcloud-controls-diameter) * 0.5);
     --_diameter: calc(var(--tagcloud-diameter) * 0.88);
   }
 }
-
 @media only screen and (max-width: 32rem) {
   .tagcloud-wrapper {
     --_diameter: calc(var(--tagcloud-diameter) * 0.75);
   }
 }
-
 .tagcloud-wrapper:has(.tagcloud-rotation:hover) {
   --tagcloud-animation-play-state: paused;
 }
-
 .tagcloud-wrapper .tagcloud-tags {
   position: absolute;
   width: var(--_diameter);
@@ -83,7 +84,6 @@ tagcloud
     var(--tagcloud-animation-direction) linear infinite
     var(--tagcloud-animation-play-state);
 }
-
 @keyframes tagcloud-rotation {
   from {
     transform: translate(-50%, -50%) rotateX(0deg);
@@ -92,13 +92,11 @@ tagcloud
     transform: translate(-50%, -50%) rotateX(360deg);
   }
 }
-
 .tagcloud-wrapper
   .tagcloud-tags:has(.tagcloud-tag div a:hover)
   .tagcloud-tag:not(:has(div a:hover)) {
   opacity: 0.25;
 }
-
 .tagcloud-wrapper .tagcloud-tag {
   --_phi: acos(calc(-1 + (2 * var(--index)) / var(--num-elements)));
   --_theta: calc(
@@ -133,7 +131,6 @@ tagcloud
     var(--tagcloud-animation-direction) linear infinite
     var(--tagcloud-animation-play-state);
 }
-
 @keyframes tagcloud-tag-rotation {
   from {
     transform: translate3d(var(--_final-x), var(--_final-y), var(--_final-z))
@@ -144,13 +141,11 @@ tagcloud
       rotateX(0deg);
   }
 }
-
 .tagcloud-wrapper .tagcloud-tag div {
   transform: rotateZ(calc(var(--_current-rotation) * -1deg));
   transition: transform var(--tagcloud-transition-user-duration)
     var(--tagcloud-transition-user-ease);
 }
-
 .tagcloud-wrapper .tagcloud-tag div a {
   pointer-events: initial;
   color: rgb(var(--tag-font-color-rgb));
@@ -161,7 +156,6 @@ tagcloud
     -1px -1px 1px rgb(var(--tagcloud-bg-color-rgb)),
     0 0 1rem rgb(var(--tagcloud-bg-color-rgb));
 }
-
 .tagcloud-wrapper .tagcloud-controls {
   width: var(--_control-diamater);
   aspect-ratio: 1 / 1;
@@ -169,7 +163,6 @@ tagcloud
   --_current-rotation: var(--tagcloud-start-rotation);
   transform-style: inherit;
 }
-
 .tagcloud-wrapper .tagcloud-controls .tagcloud-control-button {
   --_width: var(--_control-radius);
   --_height: calc(
@@ -199,7 +192,6 @@ tagcloud
     var(--tagcloud-transition-ease);
   background-color: var(--tagcloud-control-bg-color);
 }
-
 .tagcloud-wrapper .tagcloud-controls .tagcloud-control-button input {
   -webkit-appearance: none;
   appearance: none;
@@ -207,124 +199,100 @@ tagcloud
   width: 100%;
   height: 100%;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls
   .tagcloud-control-button:has(input:checked) {
   background-color: var(--tagcloud-control-bg-checked-color);
 }
-
 .tagcloud-wrapper .tagcloud-controls .tagcloud-control-button:has(input:hover) {
   background-color: var(--tagcloud-control-bg-hover-color);
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(1) input:checked) {
   --_current-rotation: 108;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(2) input:checked) {
   --_current-rotation: 126;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(3) input:checked) {
   --_current-rotation: 144;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(4) input:checked) {
   --_current-rotation: 162;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(5) input:checked) {
   --_current-rotation: 180;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(6) input:checked) {
   --_current-rotation: 198;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(7) input:checked) {
   --_current-rotation: 216;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(8) input:checked) {
   --_current-rotation: 234;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(9) input:checked) {
   --_current-rotation: 252;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(10) input:checked) {
   --_current-rotation: 270;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(11) input:checked) {
   --_current-rotation: 288;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(12) input:checked) {
   --_current-rotation: 306;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(13) input:checked) {
   --_current-rotation: 324;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(14) input:checked) {
   --_current-rotation: 342;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(15) input:checked) {
   --_current-rotation: 0;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(16) input:checked) {
   --_current-rotation: 18;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(17) input:checked) {
   --_current-rotation: 36;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(18) input:checked) {
   --_current-rotation: 54;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(19) input:checked) {
   --_current-rotation: 72;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls:has(.tagcloud-control-button:nth-child(20) input:checked) {
   --_current-rotation: 90;
 }
-
 .tagcloud-wrapper
   .tagcloud-controls
   .tagcloud-control-button:has(input:checked)
   ~ .tagcloud-rotation {
   transform: translate(-50%, -50%) rotate(calc(var(--_current-rotation) * 1deg));
 }
-
 .tagcloud-wrapper
   .tagcloud-controls
   .tagcloud-control-button:has(input:checked)
@@ -334,7 +302,6 @@ tagcloud
   div {
   transform: rotateZ(calc(var(--_current-rotation) * -1deg));
 }
-
 .tagcloud-wrapper .tagcloud-controls .tagcloud-rotation {
   position: absolute;
   width: var(--_diameter);
@@ -351,18 +318,4 @@ tagcloud
   transform: translate(-50%, -50%) rotate(calc(var(--_current-rotation) * 1deg));
   transition: transform var(--tagcloud-transition-user-duration)
     var(--tagcloud-transition-user-ease);
-}
-
-.tagcloud-wrapper .tagcloud-controls {
-  width: 100vw;
-  height: 50vh;
-}
-
-.tagcloud-tag div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  width: 70px;
-  height: 70px;
 }
