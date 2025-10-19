@@ -1,6 +1,6 @@
 import Title from "../ui/Title";
 import "./styles.css";
-import { profile, experience } from "../../data/profile";
+import { profile } from "../../data/profile";
 
 const About = () => {
   return (
@@ -19,17 +19,6 @@ const About = () => {
             ))}
           </div>
         </div>
-      </div>
-
-      <div className="experience">
-        <h3>経歴</h3>
-        <ul>
-          {experience.map((item, index) => (
-            <li key={index}>
-              <strong>{item.date}</strong> {item.content}
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );
