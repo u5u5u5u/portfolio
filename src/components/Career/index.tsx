@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
 import { career } from "../../data/profile";
 import "./styles.css";
+import Title from "../ui/Title";
 
 // GSAPプラグインを登録
 gsap.registerPlugin(ScrollTrigger);
@@ -25,7 +26,7 @@ const Career = () => {
 
       // 横スクロールアニメーションの設定
       gsap.to(slides, {
-        xPercent: -100 * (slides.length - 1), // -X軸方向に移動
+        xPercent: -100 * (slides.length - 2), // -X軸方向に移動
         ease: "none", // アニメーションのイージング(noneは定速)
         scrollTrigger: {
           trigger: wrapperRef.current, // アニメーション開始のトリガー要素
@@ -42,26 +43,32 @@ const Career = () => {
 
   return (
     // refをラッパー要素にアタッチ
-    <div
-      className="career-wrapper"
-      ref={wrapperRef}
-      style={{ width: `calc(${career.length} * 600px)` }}
-    >
-      {career.map((item, index) => (
-        <div
-          key={index}
-          className={`scroll-item-${String(index + 1).padStart(
-            2,
-            "0"
-          )} scroll-item`}
-        >
-          <div className="career">
-            <p className="career-content">{item.content}</p>
-            <p className="career-date">{item.date}</p>
+
+    <div id="career">
+      <div className="title">
+        <Title text="Career" />
+      </div>
+      <div
+        className="career-wrapper"
+        ref={wrapperRef}
+        style={{ width: `calc(${career.length} * 600px)` }}
+      >
+        {career.map((item, index) => (
+          <div
+            key={index}
+            className={`scroll-item-${String(index + 1).padStart(
+              2,
+              "0"
+            )} scroll-item`}
+          >
+            <div className="career">
+              <p className="career-content">{item.content}</p>
+              <p className="career-date">{item.date}</p>
+            </div>
+            <div className="line"></div>
           </div>
-          <div className="line"></div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

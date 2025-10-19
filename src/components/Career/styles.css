@@ -1,8 +1,23 @@
+#career {
+  position: relative;
+}
 /* ラッパー */
 .career-wrapper {
   display: flex;
   height: 100vh;
   overflow: hidden;
+}
+
+.title {
+  position: absolute; /* <-- absolute から fixed に変更 */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+
+  /* ...装飾... */
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 /* 各スライド（タイムラインの「駅」） */
@@ -27,7 +42,7 @@
 .career {
   position: absolute;
   width: auto; /* 幅を可変にする */
-  text-align: left; 
+  text-align: left;
   padding: 5px 0;
 }
 
@@ -61,7 +76,7 @@
   /* * 親(.career)の左端の外側に配置
    * (right: 100% = 親の left: 0% の地点)
    */
-  right: 100%; 
+  right: 100%;
 }
 
 /* 奇数番目（上側）の「斜め線」 */
@@ -83,7 +98,6 @@
 }
 
 /* --- 修正ここまで --- */
-
 
 /* テキストスタイル調整 */
 .career-content {
