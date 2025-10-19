@@ -1,12 +1,22 @@
-export const profile = {
-  name_ja: "陣内 勇冴",
-  name_en: "Yuga Jinnai",
-  birthYear: 2003,
-  birthPlace: "熊本県",
-  university: "九州工業大学 情報工学部 知能情報工学科 メディア情報学コース",
-  grade: "学部3年",
-  bio: "現在,大学で機械学習や画像処理を学び,その傍らでweb開発にも励む. 開発では,主にフロントエンドとデザインを担当.",
-};
+export const profile = [
+  { label: "名前", value: "陣内 勇冴（Jinnai Yugo）" },
+  { label: "生年", value: "2003年" },
+  { label: "出身地", value: "熊本県" },
+  {
+    label: "所属",
+    value:
+      "九州工業大学 情報工学部 知能情報工学科\nメディア情報学コース 学部3年",
+  },
+  {
+    label: "趣味",
+    value: "スポーツ観戦（野球、格闘技）",
+  },
+  {
+    label: "自己紹介",
+    value:
+      "現在、大学で機械学習や画像処理を学び、その傍らでweb開発にも励む\n開発では,主にフロントエンドとデザインを担当",
+  },
+];
 
 export const experience = [
   { date: "2023.04", content: "九州工業大学 情報工学部 入学" },

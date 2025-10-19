@@ -82,7 +82,7 @@ export const skills: Skill[] = [
     name: "Git",
     level: 4,
     category: ["other"],
-    icon: "https://icon.icepanel.io/Technology/svg/Git.svg",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
   },
   {
     name: "Figma",
