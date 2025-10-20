@@ -3,7 +3,7 @@ import "./styles.css";
 const ContactForm = () => {
   return (
     <form
-      action="https://formspree.io/f/mnqyojld"
+      action=""
       method="POST"
       className="contact-form"
     >

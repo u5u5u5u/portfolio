@@ -11,6 +11,7 @@
 body {
   background-color: black;
   color: white;
+  overflow-x: hidden;
 }
 
 a {
@@ -24,4 +25,9 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+canvas {
+  width: 100vw !important;
+  height: 100vh !important;
 }
