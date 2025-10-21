@@ -7,6 +7,7 @@ import Hero from "./components/Hero";
 import Skills from "./components/Skills";
 import Works from "./components/Works";
 import Career from "./components/Career";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <Analytics />
     </>
   );
 }
