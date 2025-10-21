@@ -1,0 +1,86 @@
+#career {
+  position: relative;
+}
+
+.career-wrapper {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.scroll-item {
+  flex: 1;
+  position: relative;
+  height: 100%;
+}
+
+.line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #ccc;
+  transform: translateY(-50%);
+}
+
+.career {
+  position: absolute;
+  width: auto;
+  text-align: left;
+  padding: 5px 0;
+}
+
+.scroll-item:nth-child(odd) .career {
+  bottom: calc(50% + 40px);
+  left: calc(40% + 40px);
+  border-bottom: 2px solid #ccc;
+}
+
+.scroll-item:nth-child(even) .career {
+  top: calc(50% + 40px);
+  left: calc(40% + 40px);
+  border-top: 2px solid #ccc;
+}
+
+.career::before {
+  content: "";
+  position: absolute;
+  width: 57px;
+  height: 2px;
+  background-color: #ccc;
+  right: 100%;
+}
+
+.scroll-item:nth-child(odd) .career::before {
+  top: 100%;
+  transform: rotate(-45deg);
+  transform-origin: top right;
+}
+
+.scroll-item:nth-child(even) .career::before {
+  bottom: 100%;
+  transform: rotate(45deg);
+  transform-origin: bottom right;
+}
+
+.career-content {
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: bold;
+  white-space: pre-wrap;
+}
+
+.career-date {
+  font-size: 1rem;
+  color: #666;
+  margin: 0.25rem 0 0 0;
+}

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap");
+
 :root {
   --border-radius: 15px;
 }
@@ -9,8 +11,10 @@
 }
 
 body {
+  font-family: "Zen Antique", serif;
   background-color: black;
   color: white;
+  overflow-x: hidden;
 }
 
 a {
@@ -24,4 +28,9 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+canvas {
+  width: 100vw !important;
+  height: 100vh !important;
 }
