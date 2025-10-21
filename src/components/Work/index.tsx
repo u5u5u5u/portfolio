@@ -1,6 +1,6 @@
-import "./styles.css";
+import type { Work as WorkType } from "../../types/work";
 import Tag from "../ui/Tag";
-import type { WorkType } from "../../data/works";
+import "./styles.css";
 
 interface WorkProps {
   work: WorkType;
@@ -9,21 +9,21 @@ interface WorkProps {
 const Work = ({ work }: WorkProps) => {
   return (
     <a
-      href={work.link}
+      href={`/works/${work.id}`}
       className="work-card"
       style={
-        work.imageUrl
+        work.thumbnail
           ? {
-              background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${work.imageUrl}) center/cover no-repeat`,
+              background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${work.thumbnail}) center/cover no-repeat`,
             }
           : undefined
       }
     >
       <h3>{work.title}</h3>
-      <p>{work.description}</p>
+      <p>{work.summary}</p>
       <div className="tags">
-        {work.tags.map((tag) => (
-          <Tag key={tag} text={tag} />
+        {work.tech?.map((tech) => (
+          <Tag key={tech.id} text={tech.name} />
         ))}
       </div>
     </a>
