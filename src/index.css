@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap");
+
 :root {
   --border-radius: 15px;
 }
@@ -9,6 +11,7 @@
 }
 
 body {
+  font-family: "Zen Antique", serif;
   background-color: black;
   color: white;
   overflow-x: hidden;
