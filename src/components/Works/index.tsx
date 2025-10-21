@@ -1,10 +1,31 @@
-import "./styles.css";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { useEffect, useState } from "react";
+import type { Work as WorkType } from "../../types/work";
 import Title from "../ui/Title";
 import Work from "../Work";
-import { works } from "../../data/works";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "./styles.css";
 
 const Works = () => {
+  const [works, setWorks] = useState<WorkType[]>([]);
+
+  useEffect(() => {
+    try {
+      const fetchWorks = async () => {
+        const response = await fetch("/api/works?limit=10&offset=0");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch works");
+        }
+
+        const data = await response.json();
+        setWorks(data.contents);
+      };
+      fetchWorks();
+    } catch (error) {
+      console.error("Error fetching works:", error);
+    }
+  }, []);
+
   return (
     <section id="works">
       <Title text="Works" />
