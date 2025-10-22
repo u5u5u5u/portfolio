@@ -19,7 +19,7 @@ vars
   --tag-diameter: 5.5rem;
   --tag-font-color-rgb: 255, 255, 255;
   --tag-font-family: "Open Sans", sans-serif;
-  --tag-font-size: 1rem;
+  --tag-font-size: 0.8rem;
   overflow: hidden;
 }
 
@@ -52,16 +52,47 @@ tagcloud
   font-size: var(--tag-font-size);
 }
 
-@media only screen and (max-width: 48rem) {
+@media only screen and (max-width: 768px) {
   .tagcloud-wrapper {
     --_control-diamater: calc(var(--tagcloud-controls-diameter) * 0.5);
-    --_diameter: calc(var(--tagcloud-diameter) * 0.88);
+    --_diameter: calc(var(--tagcloud-diameter) * 0.7);
+  }
+
+  #skills {
+    --tag-diameter: 4.5rem;
+    --tag-font-size: 0.7rem;
+  }
+
+  .tagcloud-tag div {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tagcloud-tag div img.skillicon {
+    width: 32px;
+    height: 32px;
   }
 }
 
-@media only screen and (max-width: 32rem) {
+@media only screen and (max-width: 480px) {
   .tagcloud-wrapper {
-    --_diameter: calc(var(--tagcloud-diameter) * 0.75);
+    --_diameter: calc(var(--tagcloud-diameter) * 0.55);
+  }
+
+  #skills {
+    --tag-diameter: 3.5rem;
+    --tag-font-size: 0.6rem;
+  }
+
+  .tagcloud-tag div {
+    width: 45px;
+    height: 45px;
+    gap: 0.25rem;
+  }
+
+  .tagcloud-tag div img.skillicon {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -366,4 +397,21 @@ tagcloud
   gap: 0.5rem;
   width: 70px;
   height: 70px;
+}
+
+.tagcloud-tag div img.skillicon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.tagcloud-tag div span {
+  font-size: var(--tag-font-size);
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
