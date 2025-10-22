@@ -6,6 +6,12 @@
   max-width: 60vw;
 }
 
+@media (max-width: 768px) {
+  .works-slider-wrapper {
+    max-width: 100vw;
+  }
+}
+
 /* 両端のフェードアウト効果 */
 .works-slider-wrapper::before,
 .works-slider-wrapper::after {
@@ -64,5 +70,8 @@
   .works-slider-wrapper::after {
     width: 10%;
   }
-}
 
+  .splide__slide {
+    width: 280px !important;
+  }
+}

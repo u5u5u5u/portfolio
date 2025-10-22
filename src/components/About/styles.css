@@ -1,5 +1,5 @@
 .about-container {
-  width: 80%;
+  width: 85%;
   max-width: 750px;
 }
 
@@ -47,14 +47,13 @@
   white-space: pre-line;
 }
 
-/* レスポンシブ対応 */
 @media (max-width: 768px) {
   .info-card {
-    padding: 1.5rem;
+    padding: 1.2rem 1.5rem;
   }
 
   .info-value {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 
