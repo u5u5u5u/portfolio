@@ -354,7 +354,8 @@ tagcloud
 }
 
 .tagcloud-wrapper .tagcloud-controls {
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   height: 50vh;
 }
 
