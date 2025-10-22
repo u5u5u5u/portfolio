@@ -13,6 +13,9 @@ const Career = () => {
 
   useGSAP(
     () => {
+      // モバイルではアニメーションを無効化
+      if (window.innerWidth <= 768) return;
+
       const slides = gsap.utils.toArray<HTMLDivElement>(".scroll-item");
 
       if (!slides.length) return;
