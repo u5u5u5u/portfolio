@@ -3,3 +3,10 @@
   text-align: center;
   margin-bottom: 3rem;
 }
+
+@media (max-width: 768px) {
+  #contact p {
+    width: 90%;
+    margin-bottom: 1.5rem;
+  }
+}
