@@ -23,7 +23,7 @@ const Work = ({ work }: WorkProps) => {
       <p>{work.summary}</p>
       <div className="tags">
         {work.tech?.map((tech) => (
-          <Tag key={tech.id} text={tech.name} />
+          <Tag key={tech.name} text={tech.name} />
         ))}
       </div>
     </a>

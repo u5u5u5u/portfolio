@@ -18,7 +18,7 @@ const Works = () => {
         }
 
         const data = await response.json();
-        setWorks(data.contents);
+        setWorks(data.works);
       };
       fetchWorks();
     } catch (error) {
