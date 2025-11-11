@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import type { Work as WorkType } from "../../types/work";
+import "./styles.css";
 
 const WorkDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -28,7 +29,11 @@ const WorkDetail = () => {
   const tableRows = [
     {
       label: "使用技術",
-      value: work?.tech?.map((tech) => <p key={tech.name}>{tech.name}</p>),
+      value: work?.tech?.map((tech) => (
+        <p key={tech.name} className="tech">
+          {tech.name}
+        </p>
+      )),
       condition: true,
     },
     {
@@ -43,7 +48,7 @@ const WorkDetail = () => {
       value: work?.function?.map((func) => <p key={func}>{func}</p>),
       condition: work?.function,
     },
-    { label: "制作人数", value: work?.number, condition: work?.number },
+    { label: "制作人数", value: `${work?.number}人`, condition: work?.number },
     {
       label: "担当",
       value: work?.role?.map((role) => <p key={role}>{role}</p>),
@@ -55,8 +60,16 @@ const WorkDetail = () => {
       condition: work?.presentation,
     },
     { label: "制作期間", value: work?.duration, condition: work?.duration },
-    { label: "Webサイト", value: work?.webUrl, condition: work?.webUrl },
-    { label: "GitHub", value: work?.github, condition: work?.github },
+    {
+      label: "Webサイト",
+      value: <Link to={work?.webUrl || ""}>{work?.outname}</Link>,
+      condition: work?.webUrl,
+    },
+    {
+      label: "GitHub",
+      value: <Link to={work?.github || ""}>{work?.github}</Link>,
+      condition: work?.github,
+    },
     {
       label: "外部記事",
       value: <Link to={work?.outLink || ""}>{work?.outname}</Link>,
@@ -71,12 +84,12 @@ const WorkDetail = () => {
   ];
 
   return (
-    <div>
+    <div className="work-detail">
       {work ? (
-        <div>
+        <>
           <h1>{work.title}</h1>
+          <p className="summary">{work.summary}</p>
           <img src={work.thumbnail} alt={work.title} />
-          <p>{work.summary}</p>
           <table>
             <tbody>
               {tableRows.map(
@@ -84,13 +97,21 @@ const WorkDetail = () => {
                   row.condition && (
                     <tr key={index}>
                       <th>{row.label}</th>
-                      <td>{row.value}</td>
+                      <td
+                        className={
+                          row.label === "使用技術" || row.label === "機能"
+                            ? "techs"
+                            : ""
+                        }
+                      >
+                        {row.value}
+                      </td>
                     </tr>
                   )
               )}
             </tbody>
           </table>
-        </div>
+        </>
       ) : (
         <p>Loading...</p>
       )}
