@@ -1,6 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createClient } from "microcms-js-sdk";
-import type { Work as WorkType } from "../../src/types/work";
+import type { MicroCMSWorkResponse } from "../../src/types/microCMS";
+import { Work as WorkType } from "../../src/types/work";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   if (req.method !== "GET") {
@@ -19,12 +20,38 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       return res.status(400).json({ error: "Invalid or missing id parameter" });
     }
 
-    const data = await client.get<WorkType>({
+    const data = await client.get<MicroCMSWorkResponse>({
       endpoint: "works",
       contentId: id,
     });
 
-    return res.status(200).json(data);
+    const formattedData: WorkType = {
+      id: data.id,
+      title: data.title,
+      thumbnail: data.thumbnail,
+      summary: data.summary,
+      tech: data.tech?.map((techItem) => ({
+        name: techItem.name,
+      })),
+      awards: data.awards,
+      background: data.background,
+      purpose: data.purpose,
+      function: data.function,
+      number: data.number,
+      role: data.role,
+      presentation: data.presentation,
+      duration: data.duration,
+      webUrl: data.webUrl,
+      github: data.github,
+      outname: data.outname,
+      outLink: data.outLink,
+      date: data.date,
+      description: data.description,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt,
+    };
+
+    return res.status(200).json(formattedData);
   } catch (error) {
     console.error("Error fetching work detail:", error);
     return res.status(500).json({ error: "Internal Server Error" });
