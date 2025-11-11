@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createClient } from "microcms-js-sdk";
-import type { WorksResponse } from "../src/types/work";
+import type { WorksResponse } from "../../src/types/work";
 
 export interface Tech {
   id: string;

@@ -1,5 +1,6 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import type { Work as WorkType } from "../../types/work";
 import Title from "../ui/Title";
 import Work from "../Work";
@@ -51,7 +52,9 @@ const Works = () => {
         >
           {works.map((work) => (
             <SplideSlide key={work.title}>
-              <Work work={work} />
+              <Link to={`/works/${work.id}`}>
+                <Work work={work} />
+              </Link>
             </SplideSlide>
           ))}
         </Splide>
