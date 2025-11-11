@@ -10,8 +10,10 @@ const Works = () => {
 
   useEffect(() => {
     try {
-      const fetchWorks = async () => {
-        const response = await fetch("/api/works?limit=10&offset=0");
+      const fetchWorks = async (limit: string, offset: string) => {
+        const response = await fetch(
+          `/api/works?limit=${limit}&offset=${offset}`
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch works");
@@ -20,7 +22,7 @@ const Works = () => {
         const data = await response.json();
         setWorks(data.works);
       };
-      fetchWorks();
+      fetchWorks("16", "0");
     } catch (error) {
       console.error("Error fetching works:", error);
     }
