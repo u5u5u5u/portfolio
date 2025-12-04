@@ -28,7 +28,7 @@ global
 */
 #skills *,
 #skills *::before,
-#skills s*::after {
+#skills *::after {
   margin: 0;
   padding: 0;
   border: 0;
