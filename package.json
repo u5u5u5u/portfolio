@@ -15,10 +15,18 @@
     "@vercel/analytics": "^1.5.0",
     "microcms-js-sdk": "^3.2.0",
     "ogl": "^1.0.11",
+<<<<<<< HEAD
     "react": "^19.1.2",
     "react-dom": "^19.1.2",
+=======
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-markdown": "^10.1.0",
+>>>>>>> develop
     "react-router-dom": "^7.9.4",
-    "resend": "^6.2.0"
+    "remark-gfm": "^4.0.1",
+    "resend": "^6.2.0",
+    "rich-editor-to-markdown-parser": "^1.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
