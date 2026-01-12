@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
+import remarkGfm from "remark-gfm";
+import { parser } from "rich-editor-to-markdown-parser";
 import type { Work as WorkType } from "../../types/work";
 import "./styles.css";
 
@@ -108,7 +111,13 @@ const WorkDetail = () => {
                           : ""
                       }
                     >
-                      {row.value}
+                      {row.label === "詳細説明" ? (
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {parser(row.value as string)}
+                        </ReactMarkdown>
+                      ) : (
+                        row.value
+                      )}
                     </td>
                   </tr>
                 ) : null
