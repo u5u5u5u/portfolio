@@ -1,0 +1,17 @@
+export { default as HTML5 } from "../assets/skills/html5.svg";
+export { default as CSS3 } from "../assets/skills/css3.svg";
+export { default as Sass } from "../assets/skills/sass.svg";
+export { default as TailwindCSS } from "../assets/skills/tailwindcss.svg";
+export { default as JavaScript } from "../assets/skills/javascript.svg";
+export { default as TypeScript } from "../assets/skills/typescript.svg";
+export { default as React } from "../assets/skills/react.svg";
+export { default as NextJS } from "../assets/skills/nextjs.svg";
+export { default as PHP } from "../assets/skills/php.svg";
+export { default as Laravel } from "../assets/skills/laravel.svg";
+export { default as Firebase } from "../assets/skills/firebase.svg";
+export { default as Supabase } from "../assets/skills/supabase.svg";
+export { default as Git } from "../assets/skills/git.svg";
+export { default as Figma } from "../assets/skills/figma.svg";
+export { default as Canva } from "../assets/skills/canva.svg";
+export { default as Photoshop } from "../assets/skills/photoshop.svg";
+export { default as Illustrator } from "../assets/skills/illustrator.svg";
