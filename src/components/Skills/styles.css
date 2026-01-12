@@ -26,6 +26,7 @@ vars
 /*
 global
 */
+<<<<<<< Updated upstream
 #skills *,
 #skills *::before,
 #skills s*::after {
@@ -33,6 +34,9 @@ global
   padding: 0;
   border: 0;
   box-sizing: border-box;
+=======
+#skills {
+>>>>>>> Stashed changes
   display: flex;
 }
 
