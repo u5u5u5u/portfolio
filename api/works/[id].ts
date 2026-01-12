@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createClient } from "microcms-js-sdk";
-import type { MicroCMSWorkResponse } from "../../src/types/microCMS";
-import { Work as WorkType } from "../../src/types/work";
+import type { MicroCMSWorkResponse } from "../../src/types/microCMS/index.js";
+import { Work as WorkType } from "../../src/types/work.js";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   if (req.method !== "GET") {
