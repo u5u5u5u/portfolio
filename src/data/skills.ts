@@ -1,8 +1,28 @@
+import {
+  HTML5,
+  CSS3,
+  Sass,
+  TailwindCSS,
+  JavaScript,
+  TypeScript,
+  React,
+  NextJS,
+  PHP,
+  Laravel,
+  Firebase,
+  Supabase,
+  Git,
+  Figma,
+  Canva,
+  Photoshop,
+  Illustrator,
+} from "../utils/skills";
+
 export interface Skill {
   name: string;
   level: number;
   category: ("frontend" | "backend" | "devops" | "design" | "other")[];
-  icon: string;
+  icon: React.ReactNode | string;
 }
 
 export const skills: Skill[] = [
@@ -10,102 +30,102 @@ export const skills: Skill[] = [
     name: "HTML5",
     level: 4,
     category: ["frontend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+    icon: HTML5,
   },
   {
     name: "CSS3",
     level: 4,
     category: ["frontend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+    icon: CSS3,
   },
   {
     name: "Sass",
     level: 3,
     category: ["frontend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg",
+    icon: Sass,
   },
   {
     name: "Tailwind CSS",
     level: 4,
     category: ["frontend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    icon: TailwindCSS,
   },
   {
     name: "JavaScript",
     level: 3,
     category: ["frontend", "backend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+    icon: JavaScript,
   },
   {
     name: "TypeScript",
     level: 3,
     category: ["frontend", "backend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+    icon: TypeScript,
   },
   {
     name: "React",
     level: 3,
     category: ["frontend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+    icon: React,
   },
   {
     name: "Next.js",
     level: 3,
     category: ["frontend", "backend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    icon: NextJS,
   },
   {
     name: "PHP",
     level: 2,
     category: ["backend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg",
+    icon: PHP,
   },
   {
     name: "Laravel",
     level: 2,
     category: ["backend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
+    icon: Laravel,
   },
   {
     name: "Firebase",
     level: 3,
     category: ["backend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg",
+    icon: Firebase,
   },
   {
     name: "Supabase",
     level: 3,
     category: ["backend"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
+    icon: Supabase,
   },
   {
     name: "Git",
     level: 4,
     category: ["other"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    icon: Git,
   },
   {
     name: "Figma",
     level: 3,
     category: ["design"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+    icon: Figma,
   },
   {
     name: "Canva",
     level: 3,
     category: ["design"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg",
+    icon: Canva,
   },
   {
     name: "Photoshop",
     level: 1,
     category: ["design"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg",
+    icon: Photoshop,
   },
   {
     name: "Illustrator",
     level: 1,
     category: ["design"],
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg",
+    icon: Illustrator,
   },
 ];
