@@ -35,11 +35,10 @@ const Skills = () => {
                 >
                   <div>
                     <img
-                      src={skill.icon}
+                      src={skill.icon as string}
                       alt={skill.name}
                       className="skillicon"
                     />
-                    <span>{skill.name}</span>
                   </div>
                 </li>
               ))}
