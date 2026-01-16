@@ -382,6 +382,12 @@ tagcloud
     var(--tagcloud-transition-user-ease);
 }
 
+@media only screen and (max-width: 768px) {
+  .tagcloud-wrapper .tagcloud-controls .tagcloud-rotation {
+    transform: translate(-70%, -35%) rotate(calc(var(--_current-rotation) * 1deg));
+  }
+}
+
 @media only screen and (max-width: 480px) {
   .tagcloud-wrapper .tagcloud-controls .tagcloud-rotation {
     transform: translate(-90%, -45%) rotate(calc(var(--_current-rotation) * 1deg));
