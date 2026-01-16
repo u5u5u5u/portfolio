@@ -377,7 +377,7 @@ tagcloud
     rgba(var(--tagcloud-bg-color-rgb), 0) calc(75% - var(--tag-diameter))
   );
   border-radius: 50%;
-  transform: translate(-50%, -50%) rotate(calc(var(--_current-rotation) * 1deg));
+  transform: translate(-90%, -40%) rotate(calc(var(--_current-rotation) * 1deg));
   transition: transform var(--tagcloud-transition-user-duration)
     var(--tagcloud-transition-user-ease);
 }
