@@ -5,7 +5,7 @@ export const profile = [
   {
     label: "所属",
     value:
-      "九州工業大学 情報工学部 知能情報工学科\nメディア情報学コース 学部3年",
+      "九州工業大学 情報工学部 知能情報工学科\nメディア情報学コース 学部4年",
   },
   {
     label: "趣味",
@@ -39,4 +39,6 @@ export const career = [
   { date: "2025.03", content: "StepByHackathon 出場" },
   { date: "2025.06", content: "まちゃろぐ リリース" },
   { date: "2025.10", content: "e-ZUKA\nスマートアプリコンテスト\nODS賞" },
+  { date: "2025.11", content: "村田製作所&KCLハッカソン 金賞" },
+  { date: "2026.03", content: "3大学合同ハッカソン 金賞" },
 ];
