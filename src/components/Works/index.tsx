@@ -13,7 +13,7 @@ const Works = () => {
     const fetchWorks = async (limit: string, offset: string) => {
       try {
         const response = await fetch(
-          `/api/works?limit=${limit}&offset=${offset}`
+          `/api/works?limit=${limit}&offset=${offset}&orders=publishedAt`
         );
 
         if (!response.ok) {
@@ -27,7 +27,7 @@ const Works = () => {
       }
     };
 
-    void fetchWorks("16", "0");
+    void fetchWorks("5", "0");
   }, []);
 
   return (
