@@ -10,8 +10,8 @@ const Works = () => {
   const [works, setWorks] = useState<WorkType[]>([]);
 
   useEffect(() => {
-    try {
-      const fetchWorks = async (limit: string, offset: string) => {
+    const fetchWorks = async (limit: string, offset: string) => {
+      try {
         const response = await fetch(
           `/api/works?limit=${limit}&offset=${offset}`
         );
@@ -22,11 +22,12 @@ const Works = () => {
 
         const data = await response.json();
         setWorks(data.works);
-      };
-      fetchWorks("16", "0");
-    } catch (error) {
-      console.error("Error fetching works:", error);
-    }
+      } catch (error) {
+        console.error("Error fetching works:", error);
+      }
+    };
+
+    void fetchWorks("16", "0");
   }, []);
 
   return (
