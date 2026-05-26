@@ -14,7 +14,7 @@ const WorkCard = ({ work }: WorkCardProps) => {
       style={
         work.thumbnail
           ? {
-              background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${work.thumbnail}) center/cover no-repeat`,
+                background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(${work.thumbnail}) center/cover no-repeat`,
             }
           : undefined
       }
