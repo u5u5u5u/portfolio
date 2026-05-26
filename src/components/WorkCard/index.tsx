@@ -1,6 +1,6 @@
 import type { Work as WorkType } from "../../types/work";
 import Tag from "../ui/Tag";
-import "../Work/styles.css";
+import styles from "./styles.module.css";
 
 interface WorkCardProps {
   work: WorkType;
@@ -10,7 +10,7 @@ const WorkCard = ({ work }: WorkCardProps) => {
   return (
     <a
       href={`/works/${work.id}`}
-      className="work-card"
+      className={styles.workCard}
       style={
         work.thumbnail
           ? {
@@ -21,7 +21,7 @@ const WorkCard = ({ work }: WorkCardProps) => {
     >
       <h3>{work.title}</h3>
       <p>{work.summary}</p>
-      <div className="tags">
+      <div className={styles.tags}>
         {work.tech?.map((tech) => (
           <Tag key={tech.name} text={tech.name} />
         ))}
