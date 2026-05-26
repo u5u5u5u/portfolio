@@ -13,7 +13,7 @@ const Works = () => {
     const fetchWorks = async (limit: string, offset: string) => {
       try {
         const response = await fetch(
-          `/api/works?limit=${limit}&offset=${offset}&orders=publishedAt`
+          `/api/works?limit=${limit}&offset=${offset}&orders=publishedAt`,
         );
 
         if (!response.ok) {
@@ -59,6 +59,11 @@ const Works = () => {
             </SplideSlide>
           ))}
         </Splide>
+      </div>
+      <div className="works-cta">
+        <Link className="works-more-link" to="/works">
+          <span className="works-more-link-label">View all works</span>
+        </Link>
       </div>
     </section>
   );
