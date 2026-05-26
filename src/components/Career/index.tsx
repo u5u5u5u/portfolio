@@ -54,7 +54,18 @@ const Career = () => {
             )} scroll-item`}
           >
             <div className="career">
-              <p className="career-content">{item.content}</p>
+              {item.link ? (
+                <a
+                  className="career-content"
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.content}
+                </a>
+              ) : (
+                <p className="career-content">{item.content}</p>
+              )}
               <p className="career-date">{item.date}</p>
             </div>
             <div className="line"></div>
