@@ -39,4 +39,10 @@ export const career = [
   { date: "2025.03", content: "StepByHackathon 出場" },
   { date: "2025.06", content: "まちゃろぐ リリース" },
   { date: "2025.10", content: "e-ZUKA\nスマートアプリコンテスト\nODS賞" },
+  { date: "2025.11", content: "村田製作所&KCLハッカソン 優勝" },
+  {
+    date: "2026.03",
+    content:
+      "3大学(東京科学大学・立命館アジア太平洋大学・九州工業大学)合同ハッカソン\n 金賞",
+  },
 ];
