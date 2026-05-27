@@ -23,22 +23,68 @@ export const career = [
   {
     date: "2023.05",
     content: "ハッカソン 初出場\n(ハックツハッカソン ツマグロ杯)",
+    link: "http://localhost:5173/works/6pppp_86vzcz",
   },
   { date: "2023.09", content: "株式会社KINS 就職\n（インターンシップとして）" },
-  { date: "2023.12", content: "KCL Hack 優秀賞" },
-  { date: "2024.03", content: "Penguin Hack 優秀賞" },
-  { date: "2024.09", content: "若手工学アカデミーグラント\n採択" },
+  {
+    date: "2023.12",
+    content: "KCL Hack 優秀賞",
+    link: "http://localhost:5173/works/4pqpv6a4bkd",
+  },
+  {
+    date: "2024.03",
+    content: "Penguin Hack 優秀賞",
+    link: "http://localhost:5173/works/3ce3ylq-n",
+  },
+  {
+    date: "2024.09",
+    content: "若手工学アカデミーグラント\n採択",
+    link: "http://localhost:5173/works/m1aj9bz1nd",
+  },
   {
     date: "2024.10",
     content: "e-ZUKA\nスマートアプリコンテスト\n市長賞 & TRIART賞",
+    link: "http://localhost:5173/works/0za3z_18lv3",
   },
-  { date: "2024.11", content: "地球っ子ネットワークHP 公開" },
-  { date: "2024.12", content: "チャレキャラ 学び研growth賞" },
-  { date: "2024.12", content: "ハックツハッカソン アンキロ杯\n出場" },
-  { date: "2025.01", content: "データエンジニアカタパルト\n修了" },
-  { date: "2025.03", content: "StepByHackathon 出場" },
-  { date: "2025.06", content: "まちゃろぐ リリース" },
-  { date: "2025.10", content: "e-ZUKA\nスマートアプリコンテスト\nODS賞" },
-  { date: "2025.11", content: "村田製作所&KCLハッカソン 金賞" },
-  { date: "2026.03", content: "3大学合同ハッカソン 金賞" },
+  {
+    date: "2024.11",
+    content: "地球っ子ネットワークHP 公開",
+    link: "http://localhost:5173/works/jfifd-bgq2z",
+  },
+  {
+    date: "2024.12",
+    content: "チャレキャラ 学び研growth賞",
+    link: "http://localhost:5173/works/0za3z_18lv3",
+  },
+  {
+    date: "2024.12",
+    content: "ハックツハッカソン アンキロ杯\n出場",
+    link: "http://localhost:5173/works/oz6qvb-u54f",
+  },
+  {
+    date: "2025.01",
+    content: "データエンジニアカタパルト\n修了",
+    link: "http://localhost:5173/works/cm8hos7eoja",
+  },
+  { date: "2025.03", content: "StepByHackathon スポンサー賞" },
+  {
+    date: "2025.06",
+    content: "まちゃろぐ リリース",
+    link: "http://localhost:5173/works/j1blvjewvriy",
+  },
+  {
+    date: "2025.10",
+    content: "e-ZUKA\nスマートアプリコンテスト\nODS賞",
+    link: "http://localhost:5173/works/lfcbivx5k",
+  },
+  {
+    date: "2025.11",
+    content: "村田製作所&KCLハッカソン 優勝",
+    link: "http://localhost:5173/works/cz947h63eq",
+  },
+  {
+    date: "2026.03",
+    content:
+      "3大学(東京科学大学・立命館アジア太平洋大学・九州工業大学)合同ハッカソン\n 金賞",
+  },
 ];

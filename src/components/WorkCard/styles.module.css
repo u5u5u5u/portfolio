@@ -1,0 +1,48 @@
+.workCard {
+  display: inline-block;
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  padding: 1.5rem;
+}
+
+.workCard h3 {
+  font-size: 2rem;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.workCard p {
+  font-size: 1.25rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: 1rem;
+}
+
+.workCard .tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .workCard {
+    padding: 1rem;
+  }
+
+  .workCard h3 {
+    font-size: 1.5rem;
+  }
+
+  .workCard p {
+    font-size: 1rem;
+  }
+}
+

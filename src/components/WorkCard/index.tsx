@@ -2,11 +2,11 @@ import type { Work as WorkType } from "../../types/work";
 import Tag from "../ui/Tag";
 import styles from "./styles.module.css";
 
-interface WorkProps {
+interface WorkCardProps {
   work: WorkType;
 }
 
-const Work = ({ work }: WorkProps) => {
+const WorkCard = ({ work }: WorkCardProps) => {
   return (
     <a
       href={`/works/${work.id}`}
@@ -14,7 +14,7 @@ const Work = ({ work }: WorkProps) => {
       style={
         work.thumbnail
           ? {
-                background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${work.thumbnail}) center/cover no-repeat`,
+                background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(${work.thumbnail}) center/cover no-repeat`,
             }
           : undefined
       }
@@ -30,4 +30,4 @@ const Work = ({ work }: WorkProps) => {
   );
 };
 
-export default Work;
+export default WorkCard;

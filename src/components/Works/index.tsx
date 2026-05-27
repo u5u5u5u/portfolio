@@ -10,10 +10,10 @@ const Works = () => {
   const [works, setWorks] = useState<WorkType[]>([]);
 
   useEffect(() => {
-    try {
-      const fetchWorks = async (limit: string, offset: string) => {
+    const fetchWorks = async (limit: string, offset: string) => {
+      try {
         const response = await fetch(
-          `/api/works?limit=${limit}&offset=${offset}`
+          `/api/works?limit=${limit}&offset=${offset}&orders=publishedAt`,
         );
 
         if (!response.ok) {
@@ -22,11 +22,12 @@ const Works = () => {
 
         const data = await response.json();
         setWorks(data.works);
-      };
-      fetchWorks("16", "0");
-    } catch (error) {
-      console.error("Error fetching works:", error);
-    }
+      } catch (error) {
+        console.error("Error fetching works:", error);
+      }
+    };
+
+    void fetchWorks("5", "0");
   }, []);
 
   return (
@@ -58,6 +59,11 @@ const Works = () => {
             </SplideSlide>
           ))}
         </Splide>
+      </div>
+      <div className="works-cta">
+        <Link className="works-more-link" to="/works">
+          <span className="works-more-link-label">View all works</span>
+        </Link>
       </div>
     </section>
   );

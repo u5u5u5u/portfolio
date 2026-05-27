@@ -26,7 +26,7 @@ const WorkDetail = () => {
     };
 
     if (id) {
-      fetchWorkDetail(id);
+      void fetchWorkDetail(id);
     }
   }, [id]);
 
