@@ -9,25 +9,42 @@ import "./styles.css";
 const WorkDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [work, setWork] = useState<WorkType | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchWorkDetail = async (workId: string) => {
+      setLoading(true);
+      setError(null);
+
       try {
         const response = await fetch(`/api/works/${workId}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch work detail");
+          throw new Error(`Failed to fetch work detail: ${response.status}`);
         }
         const data = await response.json();
         setWork(data);
         console.log("Fetched work detail:", data);
       } catch (error) {
         console.error("Error fetching work detail:", error);
+        setError(
+          error instanceof Error
+            ? error.message
+            : "Failed to fetch work detail",
+        );
+      } finally {
+        setLoading(false);
       }
     };
 
     if (id) {
       void fetchWorkDetail(id);
+      return;
     }
+
+    setWork(null);
+    setLoading(false);
+    setError("Invalid work id");
   }, [id]);
 
   const tableRows = [
@@ -89,7 +106,11 @@ const WorkDetail = () => {
 
   return (
     <div className="work-detail">
-      {work ? (
+      {loading ? (
+        <p className="work-detail-status">Loading...</p>
+      ) : error ? (
+        <p className="work-detail-status">{error}</p>
+      ) : work ? (
         <>
           <h1>{work.title}</h1>
           <p className="summary">{work.summary}</p>
@@ -105,10 +126,10 @@ const WorkDetail = () => {
                         row.label === "使用技術" || row.label === "担当"
                           ? "row"
                           : row.label === "受賞" ||
-                            row.label === "機能" ||
-                            row.label === "発表"
-                          ? "column"
-                          : ""
+                              row.label === "機能" ||
+                              row.label === "発表"
+                            ? "column"
+                            : ""
                       }
                     >
                       {row.label === "詳細説明" ? (
@@ -120,13 +141,13 @@ const WorkDetail = () => {
                       )}
                     </td>
                   </tr>
-                ) : null
+                ) : null,
               )}
             </tbody>
           </table>
         </>
       ) : (
-        <p>Loading...</p>
+        <p className="work-detail-status">No work data found.</p>
       )}
     </div>
   );
