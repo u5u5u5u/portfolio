@@ -35,6 +35,7 @@ const Works = () => {
       <Title text="Works" />
       <div className="works-slider-wrapper">
         <Splide
+          key={works.map((work) => work.id).join("-")}
           options={{
             type: "loop",
             perPage: 1,
