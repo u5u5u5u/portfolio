@@ -1,5 +1,5 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { Resend } from "resend";
+import type { VercelRequest, VercelResponse } from "./types.js";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = "contact@u5u5u5u.work";
