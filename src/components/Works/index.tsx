@@ -5,6 +5,7 @@ import type { Work as WorkType } from "../../types/work";
 import Title from "../ui/Title";
 import Work from "../Work";
 import "./styles.css";
+import "../ui/TextAction/styles.css";
 
 const Works = () => {
   const [works, setWorks] = useState<WorkType[]>([]);

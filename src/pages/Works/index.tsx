@@ -3,6 +3,7 @@ import type { Work as WorkType } from "../../types/work";
 import WorkCard from "../../components/WorkCard";
 import "./styles.css";
 import { usePageMetadata } from "../../utils/usePageMetadata";
+import "../../components/ui/TextAction/styles.css";
 
 const PAGE_SIZE = 12;
 
@@ -17,6 +18,9 @@ const WorksPage = () => {
 
   useEffect(() => {
     const fetchWorks = async () => {
+      setLoading(true);
+      setError(false);
+
       try {
         const response = await fetch(
           `/api/works?limit=${PAGE_SIZE}&offset=${offset}&orders=publishedAt`,
@@ -40,15 +44,16 @@ const WorksPage = () => {
     void fetchWorks();
   }, [offset]);
 
+  const isLoadingMore = loading && works.length > 0;
+
   return (
-    <main>
-      <h1>Works</h1>
-      {loading ? (
-        <p role="status">読み込み中...</p>
-      ) : error ? (
-        <p role="alert">作品の取得に失敗しました。</p>
-      ) : works.length === 0 ? (
-        <p>公開中の作品はありません。</p>
+    <main className="works-page">
+      {error ? (
+        <p className="works-status" role="alert">
+          作品の取得に失敗しました。
+        </p>
+      ) : !loading && works.length === 0 ? (
+        <p className="works-status">公開中の作品はありません。</p>
       ) : (
         <div className="works-grid">
           {works.map((work) => (
@@ -56,10 +61,17 @@ const WorksPage = () => {
           ))}
         </div>
       )}
-      {!loading && !error && works.length < totalCount && (
-        <button type="button" onClick={() => setOffset(works.length)}>
-          さらに表示
-        </button>
+      {!error && works.length > 0 && works.length < totalCount && (
+        <div className="works-load-more works-cta">
+          <button
+            className="works-more-link works-load-more-button"
+            type="button"
+            onClick={() => setOffset(works.length)}
+            disabled={isLoadingMore}
+          >
+            さらに表示
+          </button>
+        </div>
       )}
     </main>
   );

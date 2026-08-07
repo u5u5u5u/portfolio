@@ -1,7 +1,45 @@
+.works-page {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  padding-top: 140px;
+}
+
 .works-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.2rem;
+}
+
+.works-status {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.works-load-more {
+  width: fit-content;
+  margin: 2rem auto 3rem;
+}
+
+.works-load-more-button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.works-load-more-button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.works-load-more-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
 }
 
 /* Let each work-card fill the grid cell; card itself controls aspect ratio */
@@ -16,7 +54,12 @@
 }
 
 @media (max-width: 768px) {
+  .works-page {
+    padding-top: 100px;
+  }
+
   .works-grid {
     grid-template-columns: 1fr;
   }
+
 }

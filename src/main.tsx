@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import PageLoader from "./components/ui/PageLoader";
 
 const App = lazy(() => import("./App.tsx"));
 const WorkDetail = lazy(() => import("./pages/WorkDetail/index.tsx"));
@@ -12,7 +13,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Layout>
-        <Suspense fallback={<main><p role="status">読み込み中...</p></main>}>
+        <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/works" element={<WorksPage />} />
