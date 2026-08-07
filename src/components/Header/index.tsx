@@ -27,16 +27,16 @@ const Header = () => {
       </button>
 
       <nav className={isMenuOpen ? "active" : ""}>
-        <a href="#about" onClick={closeMenu}>
+        <a href="/#about" onClick={closeMenu}>
           About
         </a>
-        <a href="#skills" onClick={closeMenu}>
+        <a href="/#skills" onClick={closeMenu}>
           Skills
         </a>
-        <a href="#works" onClick={closeMenu}>
+        <a href="/#works" onClick={closeMenu}>
           Works
         </a>
-        <a href="#contact" onClick={closeMenu}>
+        <a href="/#contact" onClick={closeMenu}>
           Contact
         </a>
       </nav>

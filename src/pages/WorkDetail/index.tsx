@@ -5,12 +5,18 @@ import remarkGfm from "remark-gfm";
 import { parser } from "rich-editor-to-markdown-parser";
 import type { Work as WorkType } from "../../types/work";
 import "./styles.css";
+import { usePageMetadata } from "../../utils/usePageMetadata";
 
 const WorkDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [work, setWork] = useState<WorkType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  usePageMetadata(
+    work?.title ?? "作品詳細",
+    work?.summary ?? "制作実績の詳細です。",
+  );
 
   useEffect(() => {
     const fetchWorkDetail = async (workId: string) => {
@@ -126,7 +132,12 @@ const WorkDetail = () => {
         <>
           <h1>{work.title}</h1>
           <p className="summary">{work.summary}</p>
-          <img src={work.thumbnail} alt={work.title} />
+          <img
+            src={work.thumbnail}
+            alt={work.title}
+            loading="lazy"
+            decoding="async"
+          />
           <table>
             <tbody>
               {tableRows.map((row, index) =>
