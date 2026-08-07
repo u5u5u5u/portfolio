@@ -1,5 +1,6 @@
 import "./styles.css";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+import Turnstile from "../ui/Turnstile";
 
 const FORM_STATUS = {
   IDLE: "idle",
@@ -17,6 +18,11 @@ const ContactForm = () => {
   const [message, setMessage] = useState<string>("");
   const [status, setStatus] = useState<FormStatus>(FORM_STATUS.IDLE);
   const [feedbackMessage, setFeedbackMessage] = useState<string>("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+  const handleTurnstileToken = useCallback((token: string) => {
+    setTurnstileToken(token);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,7 +35,13 @@ const ContactForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, affiliation, email, message }),
+        body: JSON.stringify({
+          name,
+          affiliation,
+          email,
+          message,
+          turnstileToken,
+        }),
       });
 
       const contentType = response.headers.get("content-type");
@@ -58,6 +70,8 @@ const ContactForm = () => {
       } else {
         setFeedbackMessage("送信に失敗しました");
       }
+    } finally {
+      setTurnstileResetSignal((current) => current + 1);
     }
   };
 
@@ -120,7 +134,11 @@ const ContactForm = () => {
           maxLength={5000}
         />
       </div>
-      <button type="submit" disabled={isSending}>
+      <Turnstile
+        onTokenChange={handleTurnstileToken}
+        resetSignal={turnstileResetSignal}
+      />
+      <button type="submit" disabled={isSending || !turnstileToken}>
         {isSending ? "送信中..." : "送信する"}
       </button>
 

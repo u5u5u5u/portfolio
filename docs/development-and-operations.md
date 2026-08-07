@@ -22,6 +22,9 @@ npm ci
 MICROCMS_SERVICE_DOMAIN=your-service-domain
 MICROCMS_API_KEY=your-microcms-api-key
 RESEND_API_KEY=your-resend-api-key
+VITE_TURNSTILE_SITEKEY=your-turnstile-sitekey
+TURNSTILE_SECRET=your-turnstile-secret
+TURNSTILE_HOSTNAMES=localhost,127.0.0.1
 ```
 
 ### 環境変数
@@ -31,8 +34,11 @@ RESEND_API_KEY=your-resend-api-key
 | `MICROCMS_SERVICE_DOMAIN` | 作品一覧・詳細 | `vite.config.ts`, `api/works/*` | microCMS のサービスドメイン |
 | `MICROCMS_API_KEY` | 作品一覧・詳細 | `vite.config.ts`, `api/works/*` | microCMS API キー |
 | `RESEND_API_KEY` | 問い合わせ | `api/send.ts` | Resend API キー |
+| `VITE_TURNSTILE_SITEKEY` | 問い合わせ | `src/components/ui/Turnstile/` | ブラウザへ公開するTurnstile Sitekey |
+| `TURNSTILE_SECRET` | 問い合わせ | `api/send.ts` | Siteverify用の秘密鍵 |
+| `TURNSTILE_HOSTNAMES` | 問い合わせ | `api/send.ts` | 検証を許可するホスト名のカンマ区切り一覧 |
 
-これらに `VITE_` 接頭辞を付けないでください。接頭辞を付けた値はクライアントバンドルから参照可能になるため、秘密鍵には不適切です。
+秘密値には `VITE_` 接頭辞を付けないでください。接頭辞を付けた値はクライアントバンドルから参照可能になります。`VITE_TURNSTILE_SITEKEY` は公開情報であるため例外です。
 
 ## 3. 開発コマンド
 
@@ -41,6 +47,15 @@ npm run dev
 ```
 
 Vite 開発サーバーを起動します。`vite.config.ts` のミドルウェアにより、作品一覧・詳細 API は同じ開発サーバー上で利用できます。
+
+問い合わせを含むVercel Functionsを確認する場合は、Development環境を取得してから専用コマンドを使います。
+
+```bash
+vercel pull --yes --environment=development
+npm run dev:vercel
+```
+
+`dev:vercel` はVercelが生成した `.vercel/.env.development.local` を明示的に読み込んでから `vercel dev` を起動します。
 
 ```bash
 npm run lint

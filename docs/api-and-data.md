@@ -85,7 +85,8 @@ microCMS の未存在エラーも現行実装では `500` にまとめられま�
   "name": "山田 太郎",
   "affiliation": "Example Inc.",
   "email": "taro@example.com",
-  "message": "お問い合わせ内容"
+  "message": "お問い合わせ内容",
+  "turnstileToken": "Turnstileが発行したトークン"
 }
 ```
 
@@ -95,8 +96,9 @@ microCMS の未存在エラーも現行実装では `500` にまとめられま�
 | `affiliation` | string | いいえ | 所属 |
 | `email` | string | はい | 返信先メールアドレス |
 | `message` | string | はい | 問い合わせ本文 |
+| `turnstileToken` | string | はい | Turnstile検証トークン（最大2,048文字） |
 
-サーバー側でも型、必須値、メール形式、各項目の最大文字数を検証します。
+サーバー側でも型、必須値、メール形式、各項目の最大文字数を検証します。メール送信前にSiteverifyを実行し、成功状態、`contact` action、許可hostnameのすべてが一致した場合だけ処理を続行します。
 
 ### 成功 `200`
 
@@ -115,6 +117,7 @@ microCMS の未存在エラーも現行実装では `500` にまとめられま�
 | --- | --- | --- |
 | `400` | 必須項目不足 | `{ "error": "Missing required fields" }` |
 | `405` | POST 以外 | `{ "error": "Method Not Allowed" }` |
+| `403` | Turnstile検証失敗 | `{ "error": "Turnstile verification failed" }` |
 | `500` | Resend の送信失敗 | `{ "error": "Failed to send email" }` |
 | `500` | その他のサーバー例外 | `{ "error": "Internal Server Error" }` |
 
