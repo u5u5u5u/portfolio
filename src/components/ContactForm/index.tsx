@@ -70,6 +70,7 @@ const ContactForm = () => {
         <input
           type="text"
           name="name"
+          id="name"
           value={name}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.target.value)
@@ -83,6 +84,7 @@ const ContactForm = () => {
         <input
           type="text"
           name="affiliation"
+          id="affiliation"
           value={affiliation}
           maxLength={200}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -95,6 +97,7 @@ const ContactForm = () => {
         <input
           type="email"
           name="email"
+          id="email"
           value={email}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setEmail(e.target.value)
@@ -107,6 +110,7 @@ const ContactForm = () => {
         <label htmlFor="message">メッセージ</label>
         <textarea
           name="message"
+          id="message"
           rows={5}
           value={message}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -121,10 +125,14 @@ const ContactForm = () => {
       </button>
 
       {status === FORM_STATUS.SUCCESS && (
-        <p className="success-message">{feedbackMessage}</p>
+        <p className="success-message" role="status" aria-live="polite">
+          {feedbackMessage}
+        </p>
       )}
       {status === FORM_STATUS.ERROR && (
-        <p className="error-message">{feedbackMessage}</p>
+        <p className="error-message" role="alert">
+          {feedbackMessage}
+        </p>
       )}
     </form>
   );

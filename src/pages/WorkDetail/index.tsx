@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import remarkGfm from "remark-gfm";
 import { parser } from "rich-editor-to-markdown-parser";
 import type { Work as WorkType } from "../../types/work";
@@ -83,17 +83,29 @@ const WorkDetail = () => {
     { label: "制作期間", value: work?.duration, condition: work?.duration },
     {
       label: "Webサイト",
-      value: <Link to={work?.webUrl || ""}>{work?.webUrl}</Link>,
+      value: (
+        <a href={work?.webUrl} target="_blank" rel="noopener noreferrer">
+          {work?.webUrl}
+        </a>
+      ),
       condition: work?.webUrl,
     },
     {
       label: "GitHub",
-      value: <Link to={work?.github || ""}>{work?.github}</Link>,
+      value: (
+        <a href={work?.github} target="_blank" rel="noopener noreferrer">
+          {work?.github}
+        </a>
+      ),
       condition: work?.github,
     },
     {
       label: "外部記事",
-      value: <Link to={work?.outLink || ""}>{work?.outname}</Link>,
+      value: (
+        <a href={work?.outLink} target="_blank" rel="noopener noreferrer">
+          {work?.outname}
+        </a>
+      ),
       condition: work?.outLink && work?.outname,
     },
     { label: "制作日", value: work?.date, condition: work?.date },

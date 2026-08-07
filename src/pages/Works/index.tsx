@@ -5,6 +5,8 @@ import "./styles.css";
 
 const WorksPage = () => {
   const [works, setWorks] = useState<WorkType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchWorks = async () => {
@@ -19,6 +21,9 @@ const WorksPage = () => {
         setWorks(data.works);
       } catch (error) {
         console.error("Error fetching works:", error);
+        setError(true);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -26,11 +31,22 @@ const WorksPage = () => {
   }, []);
 
   return (
-    <div className="works-grid">
-      {works.map((work) => (
-        <WorkCard key={work.id} work={work} />
-      ))}
-    </div>
+    <main>
+      <h1>Works</h1>
+      {loading ? (
+        <p role="status">読み込み中...</p>
+      ) : error ? (
+        <p role="alert">作品の取得に失敗しました。</p>
+      ) : works.length === 0 ? (
+        <p>公開中の作品はありません。</p>
+      ) : (
+        <div className="works-grid">
+          {works.map((work) => (
+            <WorkCard key={work.id} work={work} />
+          ))}
+        </div>
+      )}
+    </main>
   );
 };
 

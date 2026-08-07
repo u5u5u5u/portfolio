@@ -14,7 +14,11 @@ const Career = () => {
 
   useGSAP(
     () => {
-      if (window.innerWidth <= 768) return;
+      if (
+        window.innerWidth <= 768 ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      )
+        return;
 
       const slides = gsap.utils.toArray<HTMLDivElement>(".scroll-item");
 

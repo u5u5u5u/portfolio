@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSWorkResponse } from "../../src/types/microCMS/index.js";
 import { Work as WorkType } from "../../src/types/work.js";
+import { formatWork } from "../../src/utils/work.js";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   if (req.method !== "GET") {
@@ -25,35 +26,19 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       contentId: id,
     });
 
-    const formattedData: WorkType = {
-      id: data.id,
-      title: data.title,
-      thumbnail: data.thumbnail,
-      summary: data.summary,
-      tech: data.tech?.map((techItem) => ({
-        name: techItem.name,
-      })),
-      awards: data.awards,
-      background: data.background,
-      purpose: data.purpose,
-      function: data.function,
-      number: data.number,
-      role: data.role,
-      presentation: data.presentation,
-      duration: data.duration,
-      webUrl: data.webUrl,
-      github: data.github,
-      outname: data.outname,
-      outLink: data.outLink,
-      date: data.date,
-      description: data.description,
-      createdAt: data.createdAt,
-      updatedAt: data.updatedAt,
-    };
+    const formattedData: WorkType = formatWork(data);
 
     return res.status(200).json(formattedData);
   } catch (error) {
     console.error("Error fetching work detail:", error);
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "status" in error &&
+      error.status === 404
+    ) {
+      return res.status(404).json({ error: "Work not found" });
+    }
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
