@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { useParams } from "react-router-dom";
 import remarkGfm from "remark-gfm";
 import { parser } from "rich-editor-to-markdown-parser";
+import { useParams } from "wouter";
 import type { Work as WorkType } from "../../types/work";
 import "./styles.css";
 import { usePageMetadata } from "../../utils/usePageMetadata";

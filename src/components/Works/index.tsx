@@ -1,6 +1,6 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import type { Work as WorkType } from "../../types/work";
 import Title from "../ui/Title";
 import Work from "../Work";
@@ -74,7 +74,7 @@ const Works = () => {
         )}
       </div>
       <div className="works-cta">
-        <Link className="works-more-link" to="/works">
+        <Link className="works-more-link" href="/works">
           <span className="works-more-link-label">View all works</span>
         </Link>
       </div>

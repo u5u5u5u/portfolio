@@ -1,7 +1,7 @@
 import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
+import { Route, Switch } from "wouter";
 import "./index.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import PageLoader from "./components/ui/PageLoader";
 
@@ -11,16 +11,14 @@ const WorksPage = lazy(() => import("./pages/Works/index.tsx"));
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Layout>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/works" element={<WorksPage />} />
-            <Route path="/works/:id" element={<WorkDetail />} />
-          </Routes>
-        </Suspense>
-      </Layout>
-    </BrowserRouter>
+    <Layout>
+      <Suspense fallback={<PageLoader />}>
+        <Switch>
+          <Route path="/" component={App} />
+          <Route path="/works" component={WorksPage} />
+          <Route path="/works/:id" component={WorkDetail} />
+        </Switch>
+      </Suspense>
+    </Layout>
   </StrictMode>,
 );

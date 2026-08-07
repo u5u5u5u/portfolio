@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import { career } from "../../data/profile";
 import Title from "../ui/Title";
 import "./styles.css";
@@ -62,7 +62,7 @@ const Career = () => {
               {item.link ? (
                 <Link
                   className="career-content"
-                  to={item.link}
+                  href={item.link}
                 >
                   {item.content}
                 </Link>

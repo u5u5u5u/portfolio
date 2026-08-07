@@ -1,8 +1,8 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSWorksResponse } from "../../src/types/microCMS/index.js";
 import type { WorksResponse } from "../../src/types/work.js";
 import { formatWork } from "../../src/utils/work.js";
+import type { VercelRequest, VercelResponse } from "../types.js";
 
 const parseIntegerQuery = (
   value: string | string[] | undefined,
