@@ -75,6 +75,7 @@ const ContactForm = () => {
             setName(e.target.value)
           }
           required
+          maxLength={100}
         />
       </div>
       <div>
@@ -83,6 +84,7 @@ const ContactForm = () => {
           type="text"
           name="affiliation"
           value={affiliation}
+          maxLength={200}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setAffiliation(e.target.value)
           }
@@ -98,6 +100,7 @@ const ContactForm = () => {
             setEmail(e.target.value)
           }
           required
+          maxLength={254}
         />
       </div>
       <div>
@@ -110,6 +113,7 @@ const ContactForm = () => {
             setMessage(e.target.value)
           }
           required
+          maxLength={5000}
         />
       </div>
       <button type="submit" disabled={isSending}>

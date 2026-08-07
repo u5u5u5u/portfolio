@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { career } from "../../data/profile";
 import Title from "../ui/Title";
 import "./styles.css";
@@ -55,14 +56,12 @@ const Career = () => {
           >
             <div className="career">
               {item.link ? (
-                <a
+                <Link
                   className="career-content"
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  to={item.link}
                 >
                   {item.content}
-                </a>
+                </Link>
               ) : (
                 <p className="career-content">{item.content}</p>
               )}

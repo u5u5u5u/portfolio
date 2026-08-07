@@ -54,9 +54,7 @@ const Works = () => {
         >
           {works.map((work) => (
             <SplideSlide key={work.title}>
-              <Link to={`/works/${work.id}`}>
-                <Work work={work} />
-              </Link>
+              <Work work={work} />
             </SplideSlide>
           ))}
         </Splide>

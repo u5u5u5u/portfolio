@@ -1,4 +1,5 @@
 import type { Work as WorkType } from "../../types/work";
+import { Link } from "react-router-dom";
 import Tag from "../ui/Tag";
 import styles from "./styles.module.css";
 
@@ -8,8 +9,8 @@ interface WorkCardProps {
 
 const WorkCard = ({ work }: WorkCardProps) => {
   return (
-    <a
-      href={`/works/${work.id}`}
+    <Link
+      to={`/works/${work.id}`}
       className={styles.workCard}
       style={
         work.thumbnail
@@ -26,7 +27,7 @@ const WorkCard = ({ work }: WorkCardProps) => {
           <Tag key={tech.name} text={tech.name} />
         ))}
       </div>
-    </a>
+    </Link>
   );
 };
 
