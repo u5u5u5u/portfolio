@@ -4,6 +4,43 @@
   padding-top: 140px;
 }
 
+.works-filter {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0 1rem 2rem;
+}
+
+.works-filter button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  padding: 0.65rem 1.1rem;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.works-filter button:hover,
+.works-filter button.is-active {
+  background: #fff;
+  color: #000;
+}
+
+.works-filter button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.works-filter-empty {
+  grid-column: 1 / -1;
+  min-height: 40vh;
+  display: grid;
+  place-items: center;
+}
+
 .works-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -42,8 +79,7 @@
   opacity: 0.6;
 }
 
-/* Let each work-card fill the grid cell; card itself controls aspect ratio */
-.works-grid .work-card {
+.works-grid > a {
   width: 100%;
 }
 
@@ -60,6 +96,15 @@
 
   .works-grid {
     grid-template-columns: 1fr;
+  }
+
+  .works-filter {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  .works-filter button {
+    flex: 0 0 auto;
   }
 
 }

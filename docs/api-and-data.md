@@ -130,9 +130,15 @@ microCMS の未存在エラーも現行実装では `500` にまとめられま�
 | フィールド | 型 | 必須 | 用途 |
 | --- | --- | --- | --- |
 | `id` | `string` | はい | 作品 ID、詳細 URL |
+| `category` | `"digital" \| "graphic"` | いいえ | 一覧と詳細の表示種別。未設定時は `digital` |
+| `workType` | `string` | いいえ | Poster、Logo、Web、Appなどの作品種別 |
 | `title` | `string` | はい | 作品名 |
 | `thumbnail` | `string` | はい | 画像 URL |
 | `summary` | `string` | はい | カード・詳細の概要 |
+| `gallery` | `WorkImage[]` | いいえ | グラフィック作品の展開画像 |
+| `concept` | `string` | いいえ | デザインコンセプト |
+| `target` | `string` | いいえ | 想定ターゲット |
+| `tools` | `{ name: string }[]` | いいえ | Illustrator、Photoshopなどの制作ツール |
 | `tech` | `{ name: string }[]` | いいえ | 使用技術 |
 | `awards` | `string[]` | いいえ | 受賞歴 |
 | `background` | `string` | いいえ | 制作背景 |
@@ -165,6 +171,21 @@ API では次のように公開用データへ縮約します。
 - `thumbnail` は型上 `string` として扱うため、microCMS の画像フィールドを利用する場合は API 応答形状との一致を維持する。
 
 CMS スキーマを変更するときは、`src/types/microCMS/index.ts`、`src/types/work.ts`、2つの作品 API、詳細表示の全てを確認してください。
+
+### グラフィック作品用フィールド
+
+`works` に次の任意フィールドを追加すると、既存のエンドポイントのままグラフィック作品用テンプレートを利用できます。
+
+| APIフィールドID | 推奨形式 | 値・内容 |
+| --- | --- | --- |
+| `category` | セレクト | `digital` または `graphic` |
+| `workType` | テキスト | Poster、Logo、Business Cardなど |
+| `gallery` | 繰り返し可能な画像データ | `url`、任意で `width`、`height`、`alt`、`caption` |
+| `concept` | テキスト | デザインの考え方 |
+| `target` | テキスト | 想定ターゲット |
+| `tools` | セレクト（複数選択） | Illustrator、Photoshop、Figmaなど |
+
+既存作品は`category`が未設定でも`digital`として表示されます。`category`を`graphic`にした作品だけ、画像中心のカードと詳細テンプレートへ切り替わります。
 
 ## 7. セキュリティ上の境界
 

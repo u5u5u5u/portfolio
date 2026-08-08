@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-import type { Work as WorkType } from "../../types/work";
+import { useEffect, useMemo, useState } from "react";
+import type { Work as WorkType, WorkCategory } from "../../types/work";
 import WorkCard from "../../components/WorkCard";
 import "./styles.css";
 import { usePageMetadata } from "../../utils/usePageMetadata";
 import "../../components/ui/TextAction/styles.css";
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 100;
+type WorkFilter = "all" | WorkCategory;
 
 const WorksPage = () => {
   const [works, setWorks] = useState<WorkType[]>([]);
@@ -13,6 +14,7 @@ const WorksPage = () => {
   const [error, setError] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
   const [offset, setOffset] = useState(0);
+  const [filter, setFilter] = useState<WorkFilter>("all");
 
   usePageMetadata("Works", "制作実績の一覧です。");
 
@@ -45,9 +47,34 @@ const WorksPage = () => {
   }, [offset]);
 
   const isLoadingMore = loading && works.length > 0;
+  const filteredWorks = useMemo(
+    () =>
+      works.filter((work) => {
+        if (filter === "all") return true;
+        return (work.category ?? "digital") === filter;
+      }),
+    [filter, works],
+  );
 
   return (
     <main className="works-page">
+      <div className="works-filter" aria-label="作品カテゴリー">
+        {([
+          ["all", "All"],
+          ["digital", "Web / App"],
+          ["graphic", "Graphic"],
+        ] as const).map(([value, label]) => (
+          <button
+            key={value}
+            type="button"
+            className={filter === value ? "is-active" : ""}
+            aria-pressed={filter === value}
+            onClick={() => setFilter(value)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
       {error ? (
         <p className="works-status" role="alert">
           作品の取得に失敗しました。
@@ -56,9 +83,12 @@ const WorksPage = () => {
         <p className="works-status">公開中の作品はありません。</p>
       ) : (
         <div className="works-grid">
-          {works.map((work) => (
+          {filteredWorks.map((work) => (
             <WorkCard key={work.id} work={work} />
           ))}
+          {filteredWorks.length === 0 && (
+            <p className="works-filter-empty">該当する作品はありません。</p>
+          )}
         </div>
       )}
       {!error && works.length > 0 && works.length < totalCount && (

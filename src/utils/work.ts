@@ -3,9 +3,15 @@ import type { Work } from "../types/work";
 
 export const formatWork = (work: MicroCMSWorkResponse): Work => ({
   id: work.id,
+  category: work.category?.[0],
+  workType: work.workType,
   title: work.title,
   thumbnail: work.thumbnail,
   summary: work.summary,
+  gallery: work.gallery,
+  concept: work.concept,
+  target: work.target,
+  tools: work.tools?.map((name) => ({ name })),
   tech: work.tech?.map(({ name }) => ({ name })),
   awards: work.awards,
   background: work.background,

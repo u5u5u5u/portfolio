@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header className="site-header">
       <img src="/icon.png" alt="icon" />
 
       <button

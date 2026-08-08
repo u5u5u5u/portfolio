@@ -1,5 +1,7 @@
 .tag {
   display: inline-block;
+  flex: 0 0 auto;
+  white-space: nowrap;
   background: #6b7280;
   color: #ffffff;
   padding: 6px 12px;
