@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import { Link } from "wouter";
 import { career } from "../../data/profile";
 import Title from "../ui/Title";
 import "./styles.css";
@@ -13,7 +14,11 @@ const Career = () => {
 
   useGSAP(
     () => {
-      if (window.innerWidth <= 768) return;
+      if (
+        window.innerWidth <= 768 ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      )
+        return;
 
       const slides = gsap.utils.toArray<HTMLDivElement>(".scroll-item");
 
@@ -55,14 +60,12 @@ const Career = () => {
           >
             <div className="career">
               {item.link ? (
-                <a
+                <Link
                   className="career-content"
                   href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   {item.content}
-                </a>
+                </Link>
               ) : (
                 <p className="career-content">{item.content}</p>
               )}

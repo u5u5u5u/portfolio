@@ -1,7 +1,23 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSWorksResponse } from "../../src/types/microCMS/index.js";
 import type { WorksResponse } from "../../src/types/work.js";
+import { formatWork } from "../../src/utils/work.js";
+import type { VercelRequest, VercelResponse } from "../types.js";
+
+const parseIntegerQuery = (
+  value: string | string[] | undefined,
+  fallback: number,
+  minimum: number,
+  maximum: number,
+) => {
+  if (value === undefined) return fallback;
+  if (Array.isArray(value) || !/^\d+$/.test(value)) return null;
+
+  const parsed = Number(value);
+  return Number.isSafeInteger(parsed) && parsed >= minimum && parsed <= maximum
+    ? parsed
+    : null;
+};
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   if (req.method !== "GET") {
@@ -14,51 +30,35 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       apiKey: process.env.MICROCMS_API_KEY!,
     });
 
-    const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
-    const offset = req.query.offset ? parseInt(req.query.offset as string) : 0;
+    const limit = parseIntegerQuery(req.query.limit, 10, 1, 100);
+    const offset = parseIntegerQuery(req.query.offset, 0, 0, 10_000);
+    const orders = req.query.orders;
+
+    if (
+      limit === null ||
+      offset === null ||
+      (orders !== undefined && orders !== "publishedAt" && orders !== "-publishedAt")
+    ) {
+      return res.status(400).json({ error: "Invalid query parameters" });
+    }
 
     const data = await client.get<MicroCMSWorksResponse>({
       endpoint: "works",
       queries: {
         limit,
         offset,
+        ...(typeof orders === "string" ? { orders } : {}),
       },
     });
 
     const formattedData: WorksResponse = {
-      works: data.contents.map((work) => ({
-        id: work.id,
-        title: work.title,
-        thumbnail: work.thumbnail,
-        summary: work.summary,
-        tech: work.tech?.map((tech) => ({
-          name: tech.name,
-        })),
-        awards: work.awards,
-        background: work.background,
-        purpose: work.purpose,
-        function: work.function,
-        number: work.number,
-        presentation: work.presentation,
-        duration: work.duration,
-        webUrl: work.webUrl,
-        github: work.github,
-        outname: work.outname,
-        outLink: work.outLink,
-        date: work.date,
-        description: work.description,
-        createdAt: work.createdAt,
-        updatedAt: work.updatedAt,
-      })),
+      works: data.contents.map(formatWork),
       totalCount: data.totalCount,
     };
 
     return res.status(200).json(formattedData);
   } catch (error) {
     console.error("Error fetching works from microCMS:", error);
-    return res.status(500).json({
-      error: "Failed to fetch works",
-      details: error instanceof Error ? error.message : "Unknown error",
-    });
+    return res.status(500).json({ error: "Failed to fetch works" });
   }
 };

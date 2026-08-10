@@ -1,0 +1,32 @@
+import type { MicroCMSWorkResponse } from "../types/microCMS";
+import type { Work } from "../types/work";
+
+export const formatWork = (work: MicroCMSWorkResponse): Work => ({
+  id: work.id,
+  category: work.category?.[0],
+  workType: work.workType,
+  title: work.title,
+  thumbnail: work.thumbnail,
+  summary: work.summary,
+  gallery: work.gallery,
+  concept: work.concept,
+  target: work.target,
+  tools: work.tools?.map((name) => ({ name })),
+  tech: work.tech?.map(({ name }) => ({ name })),
+  awards: work.awards,
+  background: work.background,
+  purpose: work.purpose,
+  function: work.function,
+  number: work.number,
+  role: work.role,
+  presentation: work.presentation,
+  duration: work.duration,
+  webUrl: work.webUrl,
+  github: work.github,
+  outname: work.outname,
+  outLink: work.outLink,
+  date: work.date,
+  description: work.description,
+  createdAt: work.createdAt,
+  updatedAt: work.updatedAt,
+});

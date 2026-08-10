@@ -1,19 +1,24 @@
-import { StrictMode } from "react";
+import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
+import { Route, Switch } from "wouter";
 import "./index.css";
-import App from "./App.tsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import WorkDetail from "./pages/WorkDetail/index.tsx";
-import WorksPage from "./pages/Works/index.tsx";
+import Layout from "./components/Layout";
+import PageLoader from "./components/ui/PageLoader";
+
+const App = lazy(() => import("./App.tsx"));
+const WorkDetail = lazy(() => import("./pages/WorkDetail/index.tsx"));
+const WorksPage = lazy(() => import("./pages/Works/index.tsx"));
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/works" element={<WorksPage />} />
-        <Route path="/works/:id" element={<WorkDetail />} />
-      </Routes>
-    </BrowserRouter>
+    <Layout>
+      <Suspense fallback={<PageLoader />}>
+        <Switch>
+          <Route path="/" component={App} />
+          <Route path="/works" component={WorksPage} />
+          <Route path="/works/:id" component={WorkDetail} />
+        </Switch>
+      </Suspense>
+    </Layout>
   </StrictMode>,
 );

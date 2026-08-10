@@ -1,0 +1,30 @@
+.works-cta {
+  background-image: linear-gradient(#fff, #fff);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 0 1px;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  transition: background-size 0.5s;
+}
+
+.works-cta:hover {
+  background-position: bottom left;
+  background-size: 100% 1px;
+}
+
+.works-more-link {
+  padding: 0;
+  color: inherit;
+  font: inherit;
+}
+
+@media (max-width: 768px) {
+  .works-cta {
+    margin-top: 1.5rem;
+  }
+
+  .works-more-link {
+    padding: 0.75rem 1.1rem;
+  }
+}

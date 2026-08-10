@@ -1,8 +1,26 @@
+export type WorkCategory = "digital" | "graphic";
+
+export interface WorkImage {
+  url: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+  caption?: string;
+}
+
 export interface Work {
   id: string;
+  category?: WorkCategory;
+  workType?: string;
   title: string;
   thumbnail: string;
   summary: string;
+  gallery?: WorkImage[];
+  concept?: string;
+  target?: string;
+  tools?: {
+    name: string;
+  }[];
   tech?: {
     name: string;
   }[];
