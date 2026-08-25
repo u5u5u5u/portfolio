@@ -31,8 +31,8 @@ TURNSTILE_HOSTNAMES=localhost,127.0.0.1
 
 | 変数 | 必須となる機能 | 参照箇所 | 説明 |
 | --- | --- | --- | --- |
-| `MICROCMS_SERVICE_DOMAIN` | 作品一覧・詳細 | `vite.config.ts`, `api/works/*` | microCMS のサービスドメイン |
-| `MICROCMS_API_KEY` | 作品一覧・詳細 | `vite.config.ts`, `api/works/*` | microCMS API キー |
+| `MICROCMS_SERVICE_DOMAIN` | 作品一覧・詳細・SEO用HTML生成 | `vite.config.ts`, `api/works/*` | microCMS のサービスドメイン |
+| `MICROCMS_API_KEY` | 作品一覧・詳細・SEO用HTML生成 | `vite.config.ts`, `api/works/*` | microCMS API キー |
 | `RESEND_API_KEY` | 問い合わせ | `api/send.ts` | Resend API キー |
 | `VITE_TURNSTILE_SITEKEY` | 問い合わせ | `src/components/ui/Turnstile/` | ブラウザへ公開するTurnstile Sitekey |
 | `TURNSTILE_SECRET` | 問い合わせ | `api/send.ts` | Siteverify用の秘密鍵 |
@@ -97,7 +97,7 @@ microCMS の `works` API で更新します。スキーマは [API・データ�
 3. ビルドコマンドを `npm run build`、出力先を `dist` とする。
 4. デプロイ後にトップ、作品一覧、作品詳細への直接アクセス、問い合わせを確認する。
 
-`vercel.json` は現在 `/works` と `/works/:id` を `/index.html` に rewrite します。新しいクライアントルートを増やす場合は、直接アクセス時にも SPA が返るよう rewrite を更新します。
+ビルド時にmicroCMSの公開作品を取得し、`dist/works/:id/index.html` に検索・SNS共有用の固有HTMLとメタデータを生成します。`vercel.json` は `/works/:id` をこの生成ファイルへ rewriteし、Reactは同じURLから通常どおり起動します。
 
 ## 6. リリース確認
 

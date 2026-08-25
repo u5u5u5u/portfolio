@@ -34,7 +34,7 @@
     },
     {
       "source": "/works/:id",
-      "destination": "/index.html"
+      "destination": "/works/:id/index.html"
     }
   ]
 }
