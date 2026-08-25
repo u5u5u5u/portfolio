@@ -2,6 +2,7 @@
 
 :root {
   --border-radius: 15px;
+  --header-clearance: 5.5rem;
 }
 
 * {
@@ -50,6 +51,20 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  scroll-margin-top: var(--header-clearance);
+}
+
+#about,
+#contact {
+  height: auto;
+  min-height: 100vh;
+  padding: var(--header-clearance) 0 4rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-clearance: 6.5rem;
+  }
 }
 
 canvas {
