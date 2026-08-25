@@ -99,6 +99,8 @@ microCMS の `works` API で更新します。スキーマは [API・データ�
 
 ビルド時にmicroCMSの公開作品を取得し、`dist/works/:id/index.html` に検索・SNS共有用の固有HTMLとメタデータを生成します。`vercel.json` は `/works/:id` をこの生成ファイルへ rewriteし、Reactは同じURLから通常どおり起動します。
 
+同じ作品一覧から `dist/sitemap.xml` も生成します。`public/robots.txt` は本番のサイトマップURLを検索エンジンへ通知します。
+
 ## 6. リリース確認
 
 - `npm run lint` が成功する。

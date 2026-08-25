@@ -17,6 +17,25 @@ const escapeHtml = (value: string) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 
+const createSitemapXml = (works: MicroCMSWorkResponse[]) => {
+  const staticUrls = [SITE_ORIGIN, `${SITE_ORIGIN}/works`].map(
+    (url) => `  <url>\n    <loc>${url}</loc>\n  </url>`,
+  );
+  const workUrls = works.map(
+    (work) =>
+      `  <url>\n    <loc>${SITE_ORIGIN}/works/${encodeURIComponent(work.id)}</loc>\n    <lastmod>${escapeHtml(work.updatedAt)}</lastmod>\n  </url>`,
+  );
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...staticUrls,
+    ...workUrls,
+    "</urlset>",
+    "",
+  ].join("\n");
+};
+
 const createWorkHtml = (
   template: string,
   work: ReturnType<typeof formatWork>,
@@ -105,6 +124,11 @@ const createWorkPrerenderPlugin = (
           createWorkHtml(template, formatWork(rawWork)),
         );
       }),
+    );
+
+    await writeFile(
+      path.join(outputDirectory, "sitemap.xml"),
+      createSitemapXml(works),
     );
   },
 });
