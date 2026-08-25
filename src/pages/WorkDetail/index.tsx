@@ -18,6 +18,10 @@ const WorkDetail = () => {
   );
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  useEffect(() => {
     const fetchWorkDetail = async (workId: string) => {
       setLoading(true);
       setError(null);
