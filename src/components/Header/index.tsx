@@ -20,13 +20,15 @@ const Header = () => {
         className={`hamburger ${isMenuOpen ? "active" : ""}`}
         onClick={toggleMenu}
         aria-label="メニュー"
+        aria-expanded={isMenuOpen}
+        aria-controls="site-navigation"
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <nav className={isMenuOpen ? "active" : ""}>
+      <nav id="site-navigation" className={isMenuOpen ? "active" : ""}>
         <a href="/#about" onClick={closeMenu}>
           About
         </a>
