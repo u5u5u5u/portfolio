@@ -9,7 +9,7 @@ export const profile = [
   },
   {
     label: "趣味",
-    value: "スポーツ観戦（野球、格闘技）",
+    value: "スポーツ観戦（野球、格闘技）, 抹茶",
   },
   {
     label: "自己紹介",
