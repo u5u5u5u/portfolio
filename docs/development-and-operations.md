@@ -40,6 +40,8 @@ TURNSTILE_HOSTNAMES=localhost,127.0.0.1
 
 秘密値には `VITE_` 接頭辞を付けないでください。接頭辞を付けた値はクライアントバンドルから参照可能になります。`VITE_TURNSTILE_SITEKEY` は公開情報であるため例外です。
 
+GitHub ActionsのCIではmicroCMSの秘密値を扱わないため、`SKIP_WORK_PRERENDER=true`を指定して作品HTMLとサイトマップの生成だけを省略します。本番ビルドではこの変数を指定せず、microCMSの環境変数を必須とします。
+
 ## 3. 開発コマンド
 
 ```bash

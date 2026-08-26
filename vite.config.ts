@@ -79,10 +79,18 @@ const createWorkHtml = (
 const createWorkPrerenderPlugin = (
   serviceDomain: string | undefined,
   apiKey: string | undefined,
+  skipPrerender: boolean,
 ) => ({
   name: "portfolio-work-prerender",
   apply: "build" as const,
   async closeBundle() {
+    if (skipPrerender) {
+      console.warn(
+        "Skipping work page prerendering because SKIP_WORK_PRERENDER=true",
+      );
+      return;
+    }
+
     if (!serviceDomain || !apiKey) {
       throw new Error(
         "MICROCMS_SERVICE_DOMAIN and MICROCMS_API_KEY are required to prerender work pages",
@@ -158,6 +166,7 @@ export default defineConfig(({ mode }) => {
       createWorkPrerenderPlugin(
         env.MICROCMS_SERVICE_DOMAIN,
         env.MICROCMS_API_KEY,
+        process.env.SKIP_WORK_PRERENDER === "true",
       ),
       {
         name: "portfolio-dev-api",
