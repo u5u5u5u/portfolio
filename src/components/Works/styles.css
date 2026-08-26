@@ -1,14 +1,39 @@
 @import "@splidejs/react-splide/css";
 
 .works-slider-wrapper {
+  --carousel-arrow-size: 2rem;
+  --carousel-arrow-offset: 3rem;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   max-width: 60vw;
+}
+
+.works-slider-wrapper .splide {
+  padding-bottom: 2rem;
+}
+
+.works-slider-wrapper .splide__pagination {
+  bottom: 0;
+}
+
+.works-slider-wrapper .splide__arrow {
+  width: var(--carousel-arrow-size);
+  height: var(--carousel-arrow-size);
+  z-index: 11;
+}
+
+.works-slider-wrapper .splide__arrow--prev {
+  left: calc(-1 * var(--carousel-arrow-offset));
+}
+
+.works-slider-wrapper .splide__arrow--next {
+  right: calc(-1 * var(--carousel-arrow-offset));
 }
 
 @media (max-width: 768px) {
   .works-slider-wrapper {
-    max-width: 100vw;
+    width: calc(100vw - 6rem);
+    max-width: calc(100vw - 6rem);
   }
 }
 

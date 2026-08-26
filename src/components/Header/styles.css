@@ -41,7 +41,11 @@
   .hamburger {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 6px;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
     cursor: pointer;
@@ -103,6 +107,8 @@
       position: fixed;
       top: 0;
       right: -110%;
+      visibility: hidden;
+      pointer-events: none;
       width: 100%;
       height: 100vh;
       background-color: rgba(255, 255, 255, 0.75);
@@ -111,13 +117,16 @@
       justify-content: flex-start;
       align-items: center;
       gap: 2rem;
-      transition: right 0.3s ease;
+      transition: right 0.3s ease, visibility 0s linear 0.3s;
       border-radius: var(--border-radius);
       margin: 0;
       padding: 100px 0;
 
       &.active {
         right: 0;
+        visibility: visible;
+        pointer-events: auto;
+        transition-delay: 0s;
       }
 
       a {
